@@ -1,0 +1,39 @@
+create database estacionamento3; 
+use estacionamento3;
+create table carro( 
+
+idPlaca INT(10) not null auto_increment primary key,
+placa varchar(7) not null , 
+cor varchar(20) not null, 
+descricao varchar(100) not null,
+entrada varchar(100) not null,
+saida varchar(100) not null,
+valor varchar (250) not null,
+fkCliente int(11) not null
+); 
+
+create table cliente(
+idNome  INT(10) not null auto_increment primary key,
+nome varchar(35) not null,
+sobreNome varchar(35) not null,
+cpf varchar(35) not null,
+rg varchar(35) not null,
+telefone varchar(35) not null,
+email varchar(35) not null,
+data varchar(20)not null
+);
+
+create table login(
+idLogin int(11) not null auto_increment primary key,
+usuario varchar(15) not null,
+senha varchar(32) not null
+);
+
+ALTER TABLE carro     ADD CONSTRAINT fkCliente FOREIGN KEY (fkCliente) REFERENCES cliente(idNome)ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+INSERT INTO `login` (`usuario`, `senha`) VALUES( 'admin', 123);
+
+
+
+LAST_INSERT_ID()
